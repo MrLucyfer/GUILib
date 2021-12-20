@@ -42,6 +42,8 @@ public:
     inline uint8_t getG() const { return m_value.g; };
     inline uint8_t getB() const { return m_value.b; };
     inline uint8_t getA() const { return m_value.a; };
+
+    uint32_t to32bit();
 private:
     static RGBA nameToRGBA(const NamedColor& color);
 private:

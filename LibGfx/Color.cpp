@@ -56,6 +56,12 @@ RGBA Color::nameToRGBA(const Color::NamedColor &color) {
     return rgbaColor;
 }
 
-Color::~Color() = default;
+    uint32_t Color::to32bit() {
+        uint32_t color;
+        color = (m_value.a << 24) | (m_value.r << 16) | (m_value.g << 8) | m_value.b;
+        return color;
+    }
+
+    Color::~Color() = default;
 
 }

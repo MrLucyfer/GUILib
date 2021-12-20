@@ -15,7 +15,8 @@ public:
     ~Painter() = default;
 
     void fillRect(const Rect& rect, const Color::NamedColor& color);
-    void drawLine(const Point& point, const Color::NamedColor& color);
+    void drawRect(const Rect& rect, const Color::NamedColor& color, const int& thickness=1);
+    void drawLine(const Point& a, const Point& b, const Color::NamedColor& color, const int& thickness=1);
 private:
     std::unique_ptr<Bitmap> m_bitmap;
 };

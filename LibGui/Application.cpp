@@ -4,6 +4,8 @@
 
 #include "Application.h"
 #include <iostream>
+#include <Bitmap.h>
+#include <Painter.h>
 
 GUI::Application::Application() = default;
 
@@ -59,6 +61,13 @@ bool GUI::Application::init() {
         std::cout << "Couldn't create the window" << std::endl;
         return false;
     }
+
+    m_surface = SDL_GetWindowSurface(m_window);
+    if(m_surface == nullptr) {
+        std::cout << "Could not get the surface" << std::endl;
+        return false;
+    }
+
     return true;
 }
 
@@ -66,7 +75,10 @@ void GUI::Application::render() {
     paintBackground();
     SDL_RenderClear(m_renderer);
     //TODO Here we call all our render childs
-    SDL_RenderPresent(m_renderer);
+    GFX::Painter painter((GFX::Bitmap(m_surface)));
+    GFX::Rect rect(GFX::Point(), GFX::Size(200, 200));
+    painter.fillRect(rect, GFX::Color::Yellow);
+    SDL_UpdateWindowSurface(m_window);
     SDL_Delay(1);
 }
 

@@ -22,6 +22,7 @@ public:
 
     inline SDL_Renderer* getRenderer() { return m_renderer; };
     inline SDL_Window* getWindow() { return m_window; };
+    inline SDL_Surface* getSurface() { return m_surface; };
 
 private:
     Application();
@@ -43,6 +44,7 @@ private:
 
     SDL_Window* m_window { nullptr };
     SDL_Renderer* m_renderer { nullptr };
+    SDL_Surface* m_surface {nullptr};
 };
 }
 

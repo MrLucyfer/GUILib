@@ -5,6 +5,7 @@
 #pragma once
 #include "Point.h"
 #include "Size.h"
+#include <vector>
 
 namespace GFX {
 class Rect {
@@ -14,6 +15,8 @@ public:
 
     inline Point getLoc() const {return m_loc;}
     inline Size getSize() const {return m_size;}
+
+    std::vector<GFX::Point> getPoints() const;
 private:
     Point m_loc;
     Size m_size;

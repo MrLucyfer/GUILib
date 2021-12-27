@@ -3,11 +3,16 @@
 //
 
 #include <memory>
-#include "LibGui/Application.h"
+#include <Application.h>
+#include <Button.h>
 
 int main(int argc, char* argv[]) {
+    GUI::Application::the().setTitle("Sindic");
+    GUI::Application::the().setBackgroundColor(GFX::Color::Cyan);
 
-    auto app = GUI::Application::the();
-    app.setTitle("Sindic");
-    return app.exec();
+    GUI::Button button;
+
+    GUI::Application::the().setMainWidget(&button);
+
+    return GUI::Application::the().exec();
 }

@@ -9,8 +9,6 @@
 
 GUI::Application::Application() = default;
 
-GUI::Application::~Application() = default;
-
 int GUI::Application::exec() {
     m_hasInited = init();
     if(m_hasInited) {
@@ -62,6 +60,12 @@ bool GUI::Application::init() {
         return false;
     }
 
+    if(TTF_Init() == -1) {
+        std::cout << "Couldn't init font core" << std::endl;
+    }
+
+    m_font.loadFont("C:/Windows/Fonts/segoeui.ttf");
+
     m_surface = SDL_GetWindowSurface(m_window);
     if(m_surface == nullptr) {
         std::cout << "Could not get the surface" << std::endl;
@@ -75,9 +79,7 @@ void GUI::Application::render() {
     paintBackground();
     SDL_RenderClear(m_renderer);
     //TODO Here we call all our render childs
-    GFX::Painter painter((GFX::Bitmap(m_surface)));
-    GFX::Rect rect(GFX::Point(), GFX::Size(200, 200));
-    painter.fillRect(rect, GFX::Color::Yellow);
+    m_mainWidget->renderEvent();
     SDL_UpdateWindowSurface(m_window);
     SDL_Delay(1);
 }
@@ -88,10 +90,17 @@ void GUI::Application::clean() {
 }
 
 void GUI::Application::paintBackground() {
-    SDL_SetRenderDrawColor(m_renderer, m_backgroundColor.getR(),  m_backgroundColor.getG(),  m_backgroundColor.getB(), SDL_ALPHA_OPAQUE);
+    //TODO: Fix the bg color issue
+    SDL_memset(m_surface->pixels, 240, m_surface->h * m_surface->pitch);
 }
 
 GUI::Application& GUI::Application::the() {
     static Application instance;
     return instance;
 }
+
+void GUI::Application::setMainWidget(GUI::Widget* widget) {
+    m_mainWidget = widget;
+}
+
+

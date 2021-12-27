@@ -7,6 +7,7 @@
 namespace GFX {
 class Size {
 public:
+    Size();
     Size(const int& width, const int& height);
     ~Size() = default;
 

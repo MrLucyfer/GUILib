@@ -10,6 +10,7 @@
 namespace GFX {
 class Rect {
 public:
+    Rect() = default;
     Rect(const Point& a, const Size& b);
     ~Rect() = default;
 

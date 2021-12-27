@@ -22,3 +22,8 @@ void GFX::Size::setHeight(const int &height) {
 void GFX::Size::setWidth(const int &width) {
     m_width = width;
 }
+
+GFX::Size::Size() {
+    m_width = 0;
+    m_height = 0;
+}

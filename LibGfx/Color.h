@@ -5,6 +5,7 @@
 #pragma once
 
 #include <cstdint>
+#include <SDL.h>
 
 namespace GFX {
 
@@ -13,6 +14,12 @@ struct RGBA {
     uint8_t g;
     uint8_t b;
     uint8_t a;
+};
+
+struct RGB {
+    uint8_t r;
+    uint8_t g;
+    uint8_t b;
 };
 
 class Color {
@@ -43,11 +50,14 @@ public:
     inline uint8_t getB() const { return m_value.b; };
     inline uint8_t getA() const { return m_value.a; };
 
-    uint32_t to32bit();
+    uint32_t to32bit() const;
+    RGB toRGB() const;
+    SDL_Color toSDL_Color() const;
 private:
     static RGBA nameToRGBA(const NamedColor& color);
 private:
     RGBA m_value{0};
+
 };
 }
 

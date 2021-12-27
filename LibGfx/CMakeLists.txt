@@ -4,6 +4,8 @@ set(SOURCES
         Rect.cpp
         Size.cpp
         Painter.cpp
-        Bitmap.cpp)
+        Bitmap.cpp
+        Font.cpp
+        )
 
 add_library(LibGfx STATIC ${SOURCES})

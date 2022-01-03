@@ -19,10 +19,10 @@ private:
 }
 
 // Defining some macros to help logging
-#define LogTrace(...) ::Logger::the()->trace(__VA_ARGS__)
+#define LogTrace(...) ::Logger::Log::the()->trace(__VA_ARGS__)
 #define LogInfo(...) ::Logger::Log::the()->info(__VA_ARGS__)
-#define LogWarn(...) ::Logger::the()->warn(__VA_ARGS__)
-#define LogError(...) ::Logger::the()->error(__VA_ARGS__)
-#define LogCritical(...) ::Logger::the()->critical(__VA_ARGS__)
+#define LogWarn(...) ::Logger::Log::the()->warn(__VA_ARGS__)
+#define LogError(...) ::Logger::Log::the()->error(__VA_ARGS__)
+#define LogCritical(...) ::Logger::Log::the()->critical(__VA_ARGS__)
 
 

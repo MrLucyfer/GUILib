@@ -1,7 +1,8 @@
 set(SOURCES
         Application.cpp
         Widget.cpp
-        Button.cpp)
+        Button.cpp
+        Label.cpp)
 
 add_library(LibGui STATIC ${SOURCES})
 include_directories(../LibGfx)
